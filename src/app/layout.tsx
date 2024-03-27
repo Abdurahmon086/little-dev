@@ -16,11 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="bg-green-950">
+        <header className="absolute top-0 w-full h-auto bg-green-700">
           <Navbar />
         </header>
-        <main className="bg-green-100 h-full">{children}</main>
-        <footer className="bg-green-950">
+        <main className="bg-green-100 h-full mt-28">{children}</main>
+        <footer className="bg-green-700">
           <Footer />
         </footer>
       </body>

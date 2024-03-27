@@ -1,3 +1,7 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,18 +28,44 @@
 }
 
 body {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: var(--foreground-rgb);
   background-color: rgb(var(--background-light-rgb));
+  color: var(--foreground-rgb);
+  font-family: "Bitter", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.text-small-light {
+  color: #fff;
+  transition: 0.2s all;
+}
+
+.text-small-light:hover {
+  color: #ffffff4d;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #fff;
+}
+
+.main-btn {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 15px;
+  padding: 5px 25px;
+  transition: 0.5s all;
+  
+}
+
+.main-btn:hover {
+background: #000;
+}
+
+.main-btn:active{
+  background: #000;
   }
-}
-
- 
