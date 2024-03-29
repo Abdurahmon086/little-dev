@@ -1,24 +1,10 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: #000;
-  --background-light-rgb: 220, 252, 231;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0; */
-  }
-}
 
 * {
   margin: 0;
@@ -32,24 +18,27 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(var(--background-light-rgb));
-  color: var(--foreground-rgb);
+  background-color: #000;
+  color: #fff;
   font-family: "Bitter", sans-serif;
   font-optical-sizing: auto;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
+  border: none;
+  outline: none;
+  text-decoration: none;
 }
 
 .text-small-light {
   color: #fff;
-  transition: 0.2s all;
+  transition: 0.5s all;
 }
 
 .text-small-light:hover {
-  color: #ffffff4d;
+  color: #ff0000;
   padding-bottom: 5px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ff0000;
 }
 
 .main-btn {
@@ -57,15 +46,95 @@ body {
   font-size: 20px;
   font-weight: 700;
   border-radius: 15px;
-  padding: 5px 25px;
-  transition: 0.5s all;
-  
+  padding: 10px 25px;
+  transition: all 0.5s ease-in-out;
+  box-shadow: red 3px 3px 20px 1px;
 }
 
 .main-btn:hover {
-background: #000;
+  background: #1c01b691;
+  padding: 10px 27px;
+  box-shadow: #1c01b691 3px 3px 20px 1px;
 }
 
-.main-btn:active{
-  background: #000;
-  }
+.main-btn:active {
+  background: #0d0f8a9c;
+  padding: 10px 27px;
+  box-shadow: #0d0f8a9c 3px 3px 20px 1px;
+}
+
+.formBtn {
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 7px 15px;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.formBtn:hover {
+  background: #1c01b691;
+  padding: 7px 18px;
+}
+
+.formBtn:active {
+  background: #0d0f8a9c;
+  padding: 7px 18px;
+}
+
+.formInput {
+  padding: 5px 10px 5px 30px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  position: relative;
+}
+
+.formInput-wrapper {
+  position: absolute;
+  top: 7px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+}
+
+.category-title {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 400px;
+  height: 400px;
+  border: 1px solid red;
+  border-radius: 15px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  transition: 0.5s all ease-in-out;
+}
+.card:hover .card-img {
+  transform: scale(1.2);
+}
+
+.card .card-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(44deg, #000, #ff000057);
+  transform: translateY(100%);
+  transition: 0.7s all ease-in-out;
+}
+
+.card:hover .card-inner {
+  transform: translateY(0);
+}

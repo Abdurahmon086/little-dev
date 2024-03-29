@@ -1,36 +1,24 @@
-import Image from "next/image";
 import Link from "next/link";
+import navData from "@/database/navData";
 
 const Navbar = () => {
-  const navData = [
-    {
-      id: 1,
-      title: "Home",
-    },
-    {
-      id: 2,
-      title: "Blog",
-    },
-    {
-      id: 3,
-      title: "Aboute",
-    },
-  ];
   return (
-    <div >
+    <div>
       <div className="container mx-auto flex justify-between items-center py-2">
-        <Link href="/">
-          <Image width={50} height={50} src="/favicon.ico" alt="" />
+        <Link href="/" className=" font-black text-4xl">
+          Little-dev
         </Link>
 
         <nav>
-          <ul className="flex items-center gap-3">
+          <ul className="flex items-center gap-7">
             {navData.map((item) => {
               return (
                 <li>
-                  <Link href={`#${item.title.toLocaleLowerCase()}`} className="text-small-light" > {item.title} </Link>
+                  <Link href={item.slug} className="text-small-light text-xl font-semibold">
+                    {item.title}
+                  </Link>
                 </li>
-              )
+              );
             })}
           </ul>
         </nav>
