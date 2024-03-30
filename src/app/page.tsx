@@ -8,7 +8,6 @@ import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
 
-
 const Home: NextPage = () => {
   return (
     <div className="">
@@ -30,7 +29,7 @@ const Home: NextPage = () => {
                 <p className="font-bold text-4xl">
                   And I'm a
                   <span className="text-red-600 px-1">
-                    <ReactTyped strings={[" Full Stuck developer"]} typeSpeed={60} backSpeed={100} loop />
+                    <ReactTyped strings={[" Full Stuck developer"]} typeSpeed={60} backSpeed={100} loop className="font-bold" />
                   </span>
                 </p>
               </div>
@@ -42,7 +41,8 @@ const Home: NextPage = () => {
                 {imgData &&
                   imgData?.social.map((item) => {
                     return (
-                      <li key={item.id}
+                      <li
+                        key={item.id}
                         className="flex items-center justify-center rounded-full border border-red-600 w-9 h-9 shadow-md shadow-red-600 hover:border-gray-600 hover:border-transparent"
                         style={{ transition: ".5s ease" }}
                       >
@@ -171,7 +171,7 @@ const Home: NextPage = () => {
                   <input required type="email" placeholder="Email Address" className="sendInput w-full" />
                 </div>
                 <input type="tel" placeholder="Mobile Number" className="sendInput" />
-                <textarea name="message" placeholder="Your Message" id="message" cols="30" rows="10" className="sendInput"></textarea>
+                <textarea name="message" placeholder="Your Message" cols={30} rows={10} id="message" className="sendInput"></textarea>
                 <MainButton title="Send Message" />
               </form>
             </RevealWrapper>
