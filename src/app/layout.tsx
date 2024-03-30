@@ -51,7 +51,7 @@ export default function RootLayout({
         <main className="h-full mb-12" >
           {children}
         </main>
-        <footer className="bg-neutral-950" onClick={() => setMenuToggle(!menuToggle)}>
+        <footer className="bg-neutral-950" onClick={() => setMenuToggle(false)}>
           <Footer />
         </footer>
         <SpeedInsights />

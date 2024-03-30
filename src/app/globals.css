@@ -69,48 +69,6 @@ body {
   box-shadow: #0d0f8a9c 3px 3px 20px 1px;
 }
 
-.formBtn {
-  color: #fff;
-  font-weight: 700;
-  border-radius: 10px;
-  padding: 7px 15px;
-  transition: all 0.5s ease-in-out;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.formBtn:hover {
-  background: #1c01b691;
-  padding: 7px 18px;
-}
-
-.formBtn:active {
-  background: #0d0f8a9c;
-  padding: 7px 18px;
-}
-
-.formInput {
-  padding: 5px 10px 5px 30px;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  position: relative;
-  color: #000;
-}
-.formInput::placeholder {
-  color: #00000071;
-}
-
-.formInput-wrapper {
-  position: absolute;
-  top: 7px;
-  left: 4px;
-  width: 20px;
-  height: 20px;
-  z-index: 10;
-}
-
 .category-title {
   font-size: 52px;
   font-weight: 700;
@@ -222,67 +180,16 @@ textarea {
 
 @media only screen and (max-width: 768px) {
   .main-btn {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 15px;
-    padding: 10px 25px;
-    transition: all 0.5s ease-in-out;
-    box-shadow: red 3px 3px 20px 1px;
+    font-size: 16px;
+    padding: 5px 20px;
   }
 
   .main-btn:hover {
-    background: #1c01b691;
-    padding: 10px 27px;
-    box-shadow: #1c01b691 3px 3px 20px 1px;
+    padding: 5px 27px;
   }
 
   .main-btn:active {
-    background: #0d0f8a9c;
-    padding: 10px 27px;
-    box-shadow: #0d0f8a9c 3px 3px 20px 1px;
-  }
-
-  .formBtn {
-    color: #fff;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 7px 15px;
-    transition: all 0.5s ease-in-out;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .formBtn:hover {
-    background: #1c01b691;
-    padding: 7px 18px;
-  }
-
-  .formBtn:active {
-    background: #0d0f8a9c;
-    padding: 7px 18px;
-  }
-
-  .formInput {
-    padding: 5px 10px 5px 30px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    position: relative;
-    color: #000;
-  }
-  .formInput::placeholder {
-    color: #00000071;
-  }
-
-  .formInput-wrapper {
-    position: absolute;
-    top: 7px;
-    left: 4px;
-    width: 20px;
-    height: 20px;
-    z-index: 10;
+    padding: 5px 27px;
   }
 
   .sendInput {
