@@ -1,36 +1,46 @@
+import { title } from "process";
+
 const imgData = {
   skill: [
     {
       id: 1,
       img: "/images/javascript.png",
+      title: "Java Script"
     },
     {
       id: 2,
       img: "/images/vue.png",
+      title: "Vue js"
     },
     {
       id: 3,
       img: "/images/react.png",
+      title: "React js"
     },
     {
       id: 4,
       img: "/images/ts-img.png",
+      title: "Type Script"
     },
     {
       id: 5,
       img: "/images/nodejs.png",
+      title: "Node js"
     },
     {
       id: 6,
       img: "/images/postgrase.png",
+      title: "Postgrase"
     },
     {
       id: 7,
       img: "/images/mongodb.png",
+      title: "Mongo DB"
     },
     {
       id: 8,
       img: "/images/git.png",
+      title: "Git"
     },
   ],
   social:[

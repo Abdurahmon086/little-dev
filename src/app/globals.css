@@ -30,6 +30,12 @@ body {
   text-decoration: none;
 }
 
+.sectionStyle {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .text-small-light {
   color: #fff;
   transition: 0.5s all;
@@ -137,4 +143,38 @@ body {
 
 .card:hover .card-inner {
   transform: translateY(0);
+}
+
+.skill-card {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 0, 0, 0.534);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: red 6px 6px 20px 4px;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  background: #700000;
+  box-shadow: #700000 6px 6px 20px 4px;
+}
+
+.sendInput {
+  background: #360303;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  border-radius: 15px;
+}
+textarea {
+  resize: none;
+}
+
+.sendInput::placeholder {
+  color: #ffffff8e;
 }

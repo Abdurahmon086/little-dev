@@ -6,19 +6,23 @@ const navData = [
   },
   {
     id: 2,
-    title: "Project",
-    slug: "#project",
-  },
-  {
-    id: 3,
     title: "Aboute",
     slug: "#aboute",
   },
   {
+    id: 3,
+    title: "Project",
+    slug: "#project",
+  },
+  {
     id: 4,
-
     title: "Skill",
     slug: "#skill",
+  },
+  {
+    id: 5,
+    title: "Contact",
+    slug: "#contact",
   },
 ];
 
