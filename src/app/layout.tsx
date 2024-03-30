@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Little-dev",
@@ -46,6 +46,7 @@ export default function RootLayout({
           <Footer />
         </footer>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
