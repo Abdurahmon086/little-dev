@@ -7,8 +7,65 @@ import { RevealWrapper } from "next-reveal";
 import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
+import { useState } from "react";
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}
 
 const Home: NextPage = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const [submitting, setSubmitting] = useState<boolean>(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (data?.success) {
+        setSubmitting(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+      } else if (data?.success == false) {
+        console.error(data?.message);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
+
+  console.log(formData);
+
   return (
     <div className="">
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
@@ -151,14 +208,14 @@ const Home: NextPage = () => {
           </RevealWrapper>
           <div className="w-full lg:w-2/3">
             <RevealWrapper origin="bottom" delay={300} duration={1000} distance="100px" reset={true} viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
-              <form className="flex gap-4 flex-col ">
+              <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
                 <div className="flex gap-4 flex-col sm:flex-row ">
-                  <input required type="text" placeholder="Full Name" className="sendInput w-full" />
-                  <input required type="email" placeholder="Email Address" className="sendInput w-full" />
+                  <input name="name" required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
+                  <input name="email" required type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
                 </div>
-                <input type="tel" placeholder="Mobile Number" className="sendInput" />
-                <textarea name="message" placeholder="Your Message" cols={30} rows={10} id="message" className="sendInput"></textarea>
-                <MainButton title="Send Message" />
+                <input name="phone" type="tel" placeholder="Mobile Number" className="sendInput" onChange={handleInputChange} />
+                <textarea name="message" placeholder="Your Message" cols={30} rows={10} id="message" className="sendInput" onChange={handleInputChange}></textarea>
+                <MainButton types="submit" title={!submitting ? "Send Message" : "..."} disabled={submitting} />
               </form>
             </RevealWrapper>
           </div>
@@ -167,5 +224,4 @@ const Home: NextPage = () => {
     </div>
   );
 };
-
 export default Home;
