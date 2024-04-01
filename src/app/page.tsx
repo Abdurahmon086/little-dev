@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormData({
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
     });
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setSubmitting(true);
     try {
