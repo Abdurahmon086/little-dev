@@ -73,7 +73,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="">
-      {!succ ? <span className="fixed top-20 z-50 right-5 bg-green-600 font-bold text-white py-3 px-5 rounded-lg">Success</span> : ""}
+      {succ ? <span className="fixed top-20 z-50 right-5 bg-green-600 font-bold text-white py-3 px-5 rounded-lg">Success</span> : ""}
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
         <div className="hero grid grid-cols-1 gap-24 lg:gap-0 lg:grid-cols-2 items-center">
           <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
