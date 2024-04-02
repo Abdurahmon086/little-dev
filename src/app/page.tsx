@@ -3,11 +3,14 @@ import { NextPage } from "next";
 import Image from "next/image";
 import heroImage from "../../public/images/4.jpg";
 import imgData from "@/database/imgData";
+import projectsData from "@/database/porojectData";
 import { RevealWrapper } from "next-reveal";
 import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
 import { useState } from "react";
+import { title } from "process";
+import { text } from "stream/consumers";
 
 interface FormData {
   name: string;
@@ -122,7 +125,7 @@ const Home: NextPage = () => {
         <div className="sectionStyle justify-center lg:justify-between gap-8 flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-[50%]">
             <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
-              <Image src="/images/blog.png" alt="blog image" height={700} width={500} className="w-full" />
+              <Image src="/images/blog.png" alt="blog image" height={700} width={500} quality={70} className="w-full" />
             </RevealWrapper>
           </div>
           <div className="w-full lg:w-[50%]">
@@ -155,17 +158,22 @@ const Home: NextPage = () => {
             </RevealWrapper>
             <RevealWrapper origin="bottom" delay={300} duration={1200} distance="50px" reset={true}>
               <ul className="flex justify-center flex-wrap gap-5 mt-6">
-                {imgData.skill &&
-                  imgData?.skill.slice(0, 6).map((item) => {
+                {projectsData &&
+                  projectsData.map((item) => {
                     return (
                       <li key={item.id} className="card shadow-lg">
-                        <Image src="/images/blog.png" alt="d" width={500} height={500} quality={75} className="card-img w-full h-full object-cover" />
+                        <Image
+                          src={item.img ? item.img : " /images/blog.png"}
+                          alt={item.title}
+                          width={500}
+                          height={500}
+                          quality={50}
+                          className="card-img w-full h-full object-cover"
+                        />
                         <div className="card-inner flex flex-col items-center p-5 pt-5">
-                          <h4 className="text-2xl lg:text-4xl font-bold mt-auto">Title</h4>
-                          <p className="text-sm lg:text-xl mt-2 text-center">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas minus aperiam accusamus voluptates blanditiis deserunt.
-                          </p>
-                          <MainButton title="View" />
+                          <h4 className="text-2xl lg:text-4xl font-bold mt-auto">{item.title}</h4>
+                          <p className="text-sm lg:text-xl mt-2 text-center text-compres">{item.text}</p>
+                          <MainButton title="View" href={item.link} />
                         </div>
                       </li>
                     );
@@ -196,7 +204,7 @@ const Home: NextPage = () => {
                 imgData?.skill.map((item) => {
                   return (
                     <li key={item.id} className="skill-card">
-                      <Image src={item.img} alt={item.title} width={100} height={100} quality={80} />
+                      <Image src={item.img} alt={item.title} width={100} height={100} quality={50} />
                       <h4 className="text-base lg:text-2xl font-bold mt-3">{item.title}</h4>
                     </li>
                   );
@@ -230,7 +238,7 @@ const Home: NextPage = () => {
                   className="sendInput"
                   onChange={handleInputChange}
                 ></textarea>
-                <MainButton types="submit" title={!submitting ? "Send Message" : "..."} disabled={submitting} />
+                <MainButton types="submit" title="Send Message" disabled={submitting} />
               </form>
             </RevealWrapper>
           </div>
