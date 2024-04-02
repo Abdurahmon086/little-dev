@@ -7,7 +7,7 @@ import { RevealWrapper } from "next-reveal";
 import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
-import { use, useState } from "react";
+import { useState } from "react";
 
 interface FormData {
   name: string;

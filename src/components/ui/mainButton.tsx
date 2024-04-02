@@ -7,7 +7,7 @@ type Props = {
 
 const MainButton = (props: Props) => {
   const { title, types = "button", onClick, disabled } = props;
- 
+
   return (
     <>
       <button type={types} onClick={onClick} disabled={disabled} className=" mt-5 main-btn bg-red-600">

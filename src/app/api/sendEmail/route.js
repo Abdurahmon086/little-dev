@@ -5,7 +5,7 @@ export async function POST(req, res) {
     const { name, email, phone, message } = await req.json();
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: "gmail",
       host: process.env.NEXT_PUBLIC_EMAIL_HOST,
       port: 587,
       secure: false,
@@ -14,20 +14,26 @@ export async function POST(req, res) {
         pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
       },
     });
-    // Create an email message
+
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
+      from: process.env.NEXT_PUBLIC_ADMIN_EMAIL_FULL,
       to: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
       subject: "Sending email through SMTP",
-      text: `
-            User Name: ${name}
-            User email: ${email}
-            User phone: ${phone}
-            User message: ${message}`,
+      html: `
+      <div style="font-family: sans-serif;">
+        <h1>Contact Form Inquiry</h1>
+        <p>You have received the following inquiry:</p>
+        <br>
+        <p>User Name: ${name}</p>
+        <p>User Email: ${email}</p>
+        <p>User phone: ${phone}</p>
+        <br>
+        <p>User Message:</p>
+        <p>${message}</p>
+        <br>
+      </div>`,
     };
-    // Send the email
     const info = await transporter.sendMail(mailOptions);
-    console.log("Email sent:", info.response);
     return NextResponse.json({ success: true, message: "Your free trial request has been sent!" });
   } catch (error) {
     console.error("Error:", error);
