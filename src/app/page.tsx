@@ -7,7 +7,7 @@ import { RevealWrapper } from "next-reveal";
 import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
-import { useState } from "react";
+import { use, useState } from "react";
 
 interface FormData {
   name: string;
@@ -25,6 +25,7 @@ const Home: NextPage = () => {
   });
 
   const [submitting, setSubmitting] = useState<boolean>(false);
+  const [succ, setSucc] = useState<boolean>(false);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -48,7 +49,13 @@ const Home: NextPage = () => {
       });
 
       const data = await response.json();
+
       if (data?.success) {
+        setSucc(true);
+        setTimeout(() => {
+          setSucc(false);
+        }, 5000);
+
         setSubmitting(false);
         setFormData({
           name: "",
@@ -64,10 +71,9 @@ const Home: NextPage = () => {
     }
   };
 
-  console.log(formData);
-
   return (
     <div className="">
+      {!succ ? <span className="fixed top-20 z-50 right-5 bg-green-600 font-bold text-white py-3 px-5 rounded-lg">Success</span> : ""}
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
         <div className="hero grid grid-cols-1 gap-24 lg:gap-0 lg:grid-cols-2 items-center">
           <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
@@ -210,11 +216,20 @@ const Home: NextPage = () => {
             <RevealWrapper origin="bottom" delay={300} duration={1000} distance="100px" reset={true} viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
               <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
                 <div className="flex gap-4 flex-col sm:flex-row ">
-                  <input name="name" required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
-                  <input name="email" required type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
+                  <input name="name" value={formData.name} required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
+                  <input name="email" value={formData.email} required type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
                 </div>
-                <input name="phone" type="tel" placeholder="Mobile Number" className="sendInput" onChange={handleInputChange} />
-                <textarea name="message" placeholder="Your Message" cols={30} rows={10} id="message" className="sendInput" onChange={handleInputChange}></textarea>
+                <input name="phone" value={formData.phone} type="tel" placeholder="Mobile Number" className="sendInput" onChange={handleInputChange} />
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  placeholder="Your Message"
+                  cols={30}
+                  rows={10}
+                  id="message"
+                  className="sendInput"
+                  onChange={handleInputChange}
+                ></textarea>
                 <MainButton types="submit" title={!submitting ? "Send Message" : "..."} disabled={submitting} />
               </form>
             </RevealWrapper>

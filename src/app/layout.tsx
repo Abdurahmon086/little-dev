@@ -39,11 +39,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header className="fixed z-50 top-0 w-full h-auto ">
-          {/* <Navbar /> */}
+          <Navbar />
         </header>
         <main className="h-full mb-12">{children}</main>
         <footer className="bg-neutral-950">
-          {/* <Footer /> */}
+          <Footer />
         </footer>
         <SpeedInsights />
         <Analytics />
