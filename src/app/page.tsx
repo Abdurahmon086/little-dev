@@ -9,8 +9,6 @@ import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
 import { useState } from "react";
-import { title } from "process";
-import { text } from "stream/consumers";
 
 interface FormData {
   name: string;
