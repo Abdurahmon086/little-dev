@@ -1,7 +1,7 @@
 "use client";
 import { NextPage } from "next";
 import Image from "next/image";
-import heroImage from "../../public/images/4.jpg";
+import heroImage from "../../public/images/4.webp";
 import imgData from "@/database/imgData";
 import projectsData from "@/database/porojectData";
 import { RevealWrapper } from "next-reveal";
@@ -123,7 +123,7 @@ const Home: NextPage = () => {
         <div className="sectionStyle justify-center lg:justify-between gap-8 flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-[50%]">
             <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
-              <Image src="/images/blog.png" alt="blog image" height={700} width={500} quality={70} className="w-full" />
+              <Image src="/images/blog.webp" alt="blog image" height={700} width={500} quality={70} className="w-full" />
             </RevealWrapper>
           </div>
           <div className="w-full lg:w-[50%]">
@@ -161,7 +161,7 @@ const Home: NextPage = () => {
                     return (
                       <li key={item.id} className="card shadow-lg">
                         <Image
-                          src={item.img ? item.img : " /images/blog.png"}
+                          src={item.img ? item.img : " /images/blog.webp"}
                           alt={item.title}
                           width={500}
                           height={500}

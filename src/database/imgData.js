@@ -2,42 +2,42 @@ const imgData = {
   skill: [
     {
       id: 1,
-      img: "/images/javascript.png",
+      img: "/images/javascript.webp",
       title: "Java Script",
     },
     {
       id: 2,
-      img: "/images/vue.png",
+      img: "/images/vue.webp",
       title: "Vue js",
     },
     {
       id: 3,
-      img: "/images/react.png",
+      img: "/images/react.webp",
       title: "React js",
     },
     {
       id: 4,
-      img: "/images/ts-img.png",
+      img: "/images/ts-img.webp",
       title: "Type Script",
     },
     {
       id: 5,
-      img: "/images/nodejs.png",
+      img: "/images/nodejs.webp",
       title: "Node js",
     },
     {
       id: 6,
-      img: "/images/postgrase.png",
+      img: "/images/postgrase.webp",
       title: "Postgrase",
     },
     {
       id: 7,
-      img: "/images/mongodb.png",
+      img: "/images/mongodb.webp",
       title: "Mongo DB",
     },
     {
       id: 8,
-      img: "/images/git.png",
+      img: "/images/git.webp",
       title: "Git",
     },
   ],
