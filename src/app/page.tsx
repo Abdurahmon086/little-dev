@@ -115,7 +115,7 @@ const Home: NextPage = () => {
             </div>
           </RevealWrapper>
           <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
-            <Image src={heroImage} alt="software development image" className="hero-img mx-auto lg:mx-0 lg:ml-auto shadow-2xl shadow-red-600" />
+            <Image src={heroImage} alt="software development image" className="hero-img mx-auto lg:mx-0 lg:ml-auto shadow-2xl shadow-red-600"  quality={75}/>
           </RevealWrapper>
         </div>
       </section>
