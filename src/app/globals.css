@@ -163,7 +163,7 @@ textarea {
   height: 500px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 0 -100px;
+  object-position: 0 -50px;
   animation: moveUpDown 4s infinite;
 }
 
