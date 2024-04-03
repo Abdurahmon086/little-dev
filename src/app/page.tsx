@@ -90,8 +90,8 @@ const Home: NextPage = () => {
                 </p>
               </div>
               <p className="mt-4 lg:w-[400px] xl:w-[600px] font-semibold text-base md:text-2xl">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-                amet.
+                Although I may be new to the industry, my passion for full-stack development drives me to continuously learn and improve my skills. I have experience working with
+                Next.js, Nuxt.js, and Nest.js frameworks.
               </p>
               <ul className="mt-4 flex gap-4">
                 {imgData &&
@@ -115,7 +115,14 @@ const Home: NextPage = () => {
             </div>
           </RevealWrapper>
           <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
-            <Image src={heroImage} alt="software development image" className="hero-img mx-auto lg:mx-0 lg:ml-auto shadow-2xl shadow-red-600"  quality={75}/>
+            <Image
+              src={heroImage}
+              alt="software development image"
+              className="hero-img mx-auto lg:mx-0 lg:ml-auto shadow-2xl shadow-red-600"
+              quality={75}
+              priority
+              placeholder="blur"
+            />
           </RevealWrapper>
         </div>
       </section>
@@ -137,9 +144,10 @@ const Home: NextPage = () => {
             </RevealWrapper>
             <RevealWrapper origin="top" delay={600} duration={500} distance="50px" reset={true}>
               <p className="text-sm md:text-base lg:text-xl shadow-transparent mt-4 lg:mt-9 mb-2">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis quam aliquam cumque sunt dolor magnam impedit enim exercitationem dolores ratione qui laboriosam
-                doloremque quidem facilis minus quae corporis quod, necessitatibus aspernatur voluptates vel consequuntur non tempora. Vitae aperiam ea, sed optio eum eaque fugit
-                libero impedit cum in inventore aspernatur!
+                I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have
+                gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js. If you
+                are looking for a dedicated full-stack developer who is ready to take on new challenges, please reach out. I look forward to discussing how we can collaborate on
+                exciting projects together.
               </p>
               <MainButton title="Read more" />
             </RevealWrapper>
