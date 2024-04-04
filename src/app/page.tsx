@@ -27,6 +27,7 @@ const Home: NextPage = () => {
 
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [succ, setSucc] = useState<boolean>(false);
+  const [errText, setErrText] = useState<string>("");
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -37,44 +38,80 @@ const Home: NextPage = () => {
     });
   };
 
+  const textTester = (value: FormData) => {
+    if (value.name.length < 3 || value.email.length < 3) {
+      setErrText("Please enter more than 3 email or name.");
+      setSubmitting(false);
+      setSucc(true);
+      return false;
+    } else if (!value.email.includes("@") || !value.email.includes(".")) {
+      setErrText("There is an error in the email, please correct it.");
+      setSubmitting(false);
+      setSucc(true);
+      return false;
+    }
+
+    for (let i = 0; i < value.phone.length; i++) {
+      if (!(((value.phone.charCodeAt(i) >= 48 && value.phone.charCodeAt(i) <= 57) || (value.phone.charCodeAt(i) === 43 && value.phone[0] === "+")) && value.phone[0] === "+")) {
+        setErrText("type phone numberdi correctly (+) and the numbers should be.");
+        setSubmitting(false);
+        setSucc(true);
+        return false;
+      }
+    }
+
+    setSucc(false);
+    setErrText("");
+    return true;
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setSubmitting(true);
-    try {
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
 
-      const data = await response.json();
-
-      if (data?.success) {
-        setSucc(true);
-        setTimeout(() => {
-          setSucc(false);
-        }, 5000);
-
-        setSubmitting(false);
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
+    if (textTester(formData)) {
+      try {
+        const response = await fetch("/api/sendEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
         });
-      } else if (data?.success == false) {
-        console.error(data?.message);
+
+        const data = await response.json();
+
+        if (data?.success) {
+          setSucc(true);
+          setTimeout(() => {
+            setSucc(false);
+          }, 5000);
+
+          setSubmitting(false);
+          setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            message: "",
+          });
+        } else if (data?.success == false) {
+          console.error(data?.message);
+        }
+      } catch (error) {
+        console.error("Error sending email:", error);
       }
-    } catch (error) {
-      console.error("Error sending email:", error);
     }
   };
 
   return (
     <div className="">
-      {succ ? <span className="fixed top-20 z-50 right-5 bg-green-600 font-bold text-white py-3 px-5 rounded-lg">Success</span> : ""}
+      {succ ? (
+        <span className={`fixed top-20 z-50 right-5 font-bold text-white py-3 px-5 rounded-lg ${errText ? " bg-red-600" : "bg-green-600"}`}>
+          {errText ? "There was an error sending the email" : "Email sent successfully"}
+        </span>
+      ) : (
+        ""
+      )}
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
         <div className="hero grid grid-cols-1 gap-24 lg:gap-0 lg:grid-cols-2 items-center">
           <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
@@ -227,13 +264,16 @@ const Home: NextPage = () => {
             </h4>
           </RevealWrapper>
           <div className="w-full lg:w-2/3">
+            <div className="bg-red-950 border-red-500 border-2 rounded-lg p-5 mb-5" style={errText ? { display: "block" } : { display: "none" }}>
+              <p className="font-semibold text-xl">Errorr : {errText}</p>
+            </div>
             <RevealWrapper origin="bottom" delay={300} duration={1000} distance="100px" reset={true} viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
               <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
                 <div className="flex gap-4 flex-col sm:flex-row ">
                   <input name="name" value={formData.name} required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
-                  <input name="email" value={formData.email} required type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
+                  <input name="email" value={formData.email} type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
                 </div>
-                <input name="phone" value={formData.phone} type="tel" placeholder="Mobile Number" className="sendInput" onChange={handleInputChange} />
+                <input name="phone" value={formData.phone} type="tel" placeholder="+998 99 123 45 67" className="sendInput" onChange={handleInputChange} />
                 <textarea
                   name="message"
                   value={formData.message}
