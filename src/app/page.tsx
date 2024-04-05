@@ -43,11 +43,17 @@ const Home: NextPage = () => {
       setErrText("Please enter more than 3 email or name.");
       setSubmitting(false);
       setSucc(true);
+      setTimeout(() => {
+        setSucc(false);
+      }, 5000);
       return false;
     } else if (!value.email.includes("@") || !value.email.includes(".")) {
       setErrText("There is an error in the email, please correct it.");
       setSubmitting(false);
       setSucc(true);
+      setTimeout(() => {
+        setSucc(false);
+      }, 5000);
       return false;
     }
 
@@ -56,6 +62,9 @@ const Home: NextPage = () => {
         setErrText("type phone numberdi correctly (+) and the numbers should be.");
         setSubmitting(false);
         setSucc(true);
+        setTimeout(() => {
+          setSucc(false);
+        }, 5000);
         return false;
       }
     }
