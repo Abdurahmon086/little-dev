@@ -123,7 +123,7 @@ const Home: NextPage = () => {
       )}
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
         <div className="hero grid grid-cols-1 gap-24 lg:gap-0 lg:grid-cols-2 items-center">
-          <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" reset={true}>
             <div className="tile">
               <div className="">
                 <p className="font-bold text text-2xl md:text-4xl">Hello, It's Me</p>
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
               </a>
             </div>
           </RevealWrapper>
-          <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" reset={true}>
             <Image
               src={heroImage}
               alt="software development image"
@@ -175,20 +175,20 @@ const Home: NextPage = () => {
       <section className="container mx-auto min-h-[100vh]" id="aboute">
         <div className="sectionStyle justify-center lg:justify-between gap-8 flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-[50%]">
-            <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
+            <RevealWrapper origin="top" delay={200} duration={400} distance="50px" reset={true}>
               <Image src="/images/blog.webp" alt="blog image" height={700} width={500} quality={70} className="w-full" />
             </RevealWrapper>
           </div>
           <div className="w-full lg:w-[50%]">
-            <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
+            <RevealWrapper origin="top" delay={200} duration={300} distance="50px" reset={true}>
               <h4 className="category-title">
                 About <span className="text-red-600"> Me</span>
               </h4>
             </RevealWrapper>
-            <RevealWrapper origin="top" delay={400} duration={500} distance="50px" reset={true}>
+            <RevealWrapper origin="top" delay={400} duration={300} distance="50px" reset={true}>
               <h5 className="text-xl lg:text-3xl font-bold -mt-5">Full Stuck Developer</h5>
             </RevealWrapper>
-            <RevealWrapper origin="top" delay={600} duration={500} distance="50px" reset={true}>
+            <RevealWrapper origin="top" delay={600} duration={300} distance="50px" reset={true}>
               <p className="text-sm md:text-base lg:text-xl shadow-transparent mt-4 lg:mt-9 mb-2">
                 I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have
                 gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js. If you
@@ -237,7 +237,7 @@ const Home: NextPage = () => {
       </section>
       <section className="container mx-auto min-h-[100vh]" id="skill">
         <div className="sectionStyle flex-col justify-center">
-          <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true}>
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" reset={true}>
             <h4 className="category-title">
               My <span className="text-red-600"> skill</span>
             </h4>
@@ -246,7 +246,7 @@ const Home: NextPage = () => {
             rotate={{ x: 12, y: 40, z: 0 }}
             origin="top"
             delay={300}
-            duration={700}
+            duration={500}
             distance="100px"
             reset={true}
             viewOffset={{ top: 0, right: 20, bottom: 0, left: 5 }}
@@ -267,7 +267,7 @@ const Home: NextPage = () => {
       </section>
       <section className="container mx-auto min-h-[100vh]" id="contact">
         <div className="sectionStyle flex-col justify-center">
-          <RevealWrapper origin="top" delay={200} duration={500} distance="50px" reset={true} viewOffset={{ top: 0, right: 25, bottom: 0, left: 0 }}>
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" reset={true} viewOffset={{ top: 0, right: 25, bottom: 0, left: 0 }}>
             <h4 className="category-title">
               Contact <span className="text-red-600"> Me!</span>
             </h4>
@@ -276,7 +276,7 @@ const Home: NextPage = () => {
             <div className="bg-red-950 border-red-500 border-2 rounded-lg p-5 mb-5" style={errText ? { display: "block" } : { display: "none" }}>
               <p className="font-semibold text-xl">Errorr : {errText}</p>
             </div>
-            <RevealWrapper origin="bottom" delay={300} duration={1000} distance="100px" reset={true} viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
+            <RevealWrapper origin="bottom" delay={300} duration={500} distance="100px" reset={true} viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
               <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
                 <div className="flex gap-4 flex-col sm:flex-row ">
                   <input name="name" value={formData.name} required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
