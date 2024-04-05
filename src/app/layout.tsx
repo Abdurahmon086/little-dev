@@ -14,16 +14,16 @@ export const metadata: Metadata = {
     title: "Little-dev",
     description:
       "I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js.",
-    url: "https://little-dev-abdurahmons-projects.vercel.app/",
+    url: "https://little-dev-green.vercel.app",
     siteName: "Little-dev",
     images: [
       {
-        url: "https://nextjs.org/og.webp",
+        url: "/images/4.webp",
         width: 800,
         height: 600,
       },
       {
-        url: "https://nextjs.org/og-alt.webp",
+        url: "/images/4.webp",
         width: 1800,
         height: 1600,
         alt: "My custom alt",
