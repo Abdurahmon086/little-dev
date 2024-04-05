@@ -45,7 +45,7 @@ const Home: NextPage = () => {
       setSucc(true);
       setTimeout(() => {
         setSucc(false);
-      }, 5000);
+      }, 3000);
       return false;
     } else if (!value.email.includes("@") || !value.email.includes(".")) {
       setErrText("There is an error in the email, please correct it.");
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
       setSucc(true);
       setTimeout(() => {
         setSucc(false);
-      }, 5000);
+      }, 3000);
       return false;
     }
 
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
         setSucc(true);
         setTimeout(() => {
           setSucc(false);
-        }, 5000);
+        }, 3000);
         return false;
       }
     }
@@ -94,7 +94,7 @@ const Home: NextPage = () => {
           setSucc(true);
           setTimeout(() => {
             setSucc(false);
-          }, 5000);
+          }, 3000);
 
           setSubmitting(false);
           setFormData({
