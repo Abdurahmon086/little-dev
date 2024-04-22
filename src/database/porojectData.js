@@ -3,7 +3,7 @@ const projectsData = [
     id: 1,
     title: "News site",
     text: "You can find out about the latest news on this site",
-    link: "https://new.bolalarolami.uz/",
+    link: "https://bolalarolami.uz/",
     img: '/images/newsBlog.webp'
   },
   {
