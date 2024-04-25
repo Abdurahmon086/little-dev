@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     siteName: "Little-dev",
     images: [
       {
-        url: "/images/4.webp",
+        url: "https://little-dev-green.vercel.app/images/4.webp",
         width: 800,
         height: 600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
       },
       {
-        url: "/images/4.webp",
+        url: "https://little-dev-green.vercel.app/images/4.webp",
         width: 1800,
         height: 1600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
