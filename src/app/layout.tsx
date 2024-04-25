@@ -8,24 +8,24 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "Little-dev",
-  icons: "/images/4.webp",
+  icons: "https://little-dev-green.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F4.1150b603.webp&w=3840&q=75",
   description:
     "I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js.",
   openGraph: {
     title: "Little-dev",
     description:
       "I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js.",
-    url: "https://little-dev-green.vercel.app",
+    url: "https://little-dev-green.vercel.app/",
     siteName: "Little-dev",
     images: [
       {
-        url: "/images/4.webp",
+        url: "https://little-dev-green.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F4.1150b603.webp&w=3840&q=75",
         width: 800,
         height: 600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
       },
       {
-        url: "/images/4.webp",
+        url: "https://little-dev-green.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F4.1150b603.webp&w=3840&q=75",
         width: 1800,
         height: 1600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
@@ -78,6 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" type="image/webp" href="https://little-dev-green.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F4.1150b603.webp&w=3840&q=75" />
       <body>
         <header className="fixed z-50 top-0 w-full h-auto ">
           <Navbar />
