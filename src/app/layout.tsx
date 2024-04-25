@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     siteName: "Little-dev",
     images: [
       {
-        url: "https://yt3.googleusercontent.com/tyc8VaKvxXjGb91vEALYpR92OmnZh_Kz8cUpy-UzRXBrUDAau31wS8h11M3Svjx14ImL3c9Wtg=s176-c-k-c0x00ffffff-no-rj",
+        url: "/images/4.webp",
         width: 800,
         height: 600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
       },
       {
-        url: "https://yt3.googleusercontent.com/tyc8VaKvxXjGb91vEALYpR92OmnZh_Kz8cUpy-UzRXBrUDAau31wS8h11M3Svjx14ImL3c9Wtg=s176-c-k-c0x00ffffff-no-rj",
+        url: "/images/4.webp",
         width: 1800,
         height: 1600,
         alt: "Hello, It's Me Abdurahmon And I'm aFull Stuck developer",
