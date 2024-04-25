@@ -8,7 +8,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "Little-dev",
-  icons: "/main.ico",
+  icons: "/images/4.webp",
   description:
     "I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js.",
   openGraph: {
@@ -79,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/ico" href="/main.ico" />
+        <link rel="icon" type="image/webp" href="/images/4.webp" />
       </head>
       <body>
         <header className="fixed z-50 top-0 w-full h-auto ">
