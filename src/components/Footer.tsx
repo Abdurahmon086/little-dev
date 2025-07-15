@@ -11,7 +11,8 @@ const Footer = () => {
           {imgData &&
             imgData?.social.map((item) => {
               return (
-                <li key={item.id}
+                <li
+                  key={item.id}
                   className="flex items-center justify-center rounded-full border border-red-600 w-9 h-9 shadow-md shadow-red-600 hover:border-gray-600 hover:border-transparent"
                   style={{ transition: ".5s ease" }}
                 >
@@ -36,7 +37,7 @@ const Footer = () => {
       </div>
 
       <p className="opacity-85 py-2 text-center">
-        © Developed by
+        © Developed by{" "}
         <Link href="https://github.com/Abdurahmon086" className="text-red-300 font-semibold">
           Abdurahmon
         </Link>

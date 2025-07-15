@@ -9,6 +9,7 @@ import { ReactTyped } from "react-typed";
 import MainButton from "@/components/ui/mainButton";
 import Link from "next/link";
 import { useState } from "react";
+import InputMask from "react-input-mask";
 
 interface FormData {
   name: string;
@@ -24,66 +25,41 @@ const Home: NextPage = () => {
     email: "",
     message: "",
   });
-
+  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [succ, setSucc] = useState<boolean>(false);
   const [errText, setErrText] = useState<string>("");
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const textTester = (value: FormData) => {
-    if (value.name.length < 3 || value.email.length < 3) {
-      setErrText("Please enter more than 3 email or name.");
-      setSubmitting(false);
-      setSucc(true);
-      setTimeout(() => {
-        setSucc(false);
-      }, 3000);
-      return false;
-    } else if (!value.email.includes("@") || !value.email.includes(".")) {
-      setErrText("There is an error in the email, please correct it.");
-      setSubmitting(false);
-      setSucc(true);
-      setTimeout(() => {
-        setSucc(false);
-      }, 3000);
-      return false;
+  const validate = (value: FormData) => {
+    const newErrors: Partial<FormData> = {};
+    if (!value.name || value.name.length < 3) {
+      newErrors.name = "Name must be at least 3 characters.";
     }
-
-    for (let i = 0; i < value.phone.length; i++) {
-      if (
-        !(
-          ((value.phone.charCodeAt(i) >= 48 && value.phone.charCodeAt(i) <= 57) || (value.phone.charCodeAt(i) === 43 && value.phone[0] === "+")) &&
-          value.phone[0] === "+"
-        )
-      ) {
-        setErrText("type phone numberdi correctly (+) and the numbers should be.");
-        setSubmitting(false);
-        setSucc(true);
-        setTimeout(() => {
-          setSucc(false);
-        }, 3000);
-        return false;
-      }
+    if (!value.email || value.email.length < 3) {
+      newErrors.email = "Email must be at least 3 characters.";
+    } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value.email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
-
-    setSucc(false);
-    setErrText("");
-    return true;
+    if (!value.phone || value.phone.replace(/\D/g, "").length < 9) {
+      newErrors.phone = "Please enter a valid phone number.";
+    }
+    if (!value.message || value.message.length < 5) {
+      newErrors.message = "Message must be at least 5 characters.";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setSubmitting(true);
-
-    if (textTester(formData)) {
+    if (validate(formData)) {
       try {
         const response = await fetch("/api/sendEmail", {
           method: "POST",
@@ -92,29 +68,22 @@ const Home: NextPage = () => {
           },
           body: JSON.stringify(formData),
         });
-
         const data = await response.json();
-
         if (data?.success) {
           setSucc(true);
           setTimeout(() => {
             setSucc(false);
           }, 3000);
-
           setSubmitting(false);
-          setFormData({
-            name: "",
-            phone: "",
-            email: "",
-            message: "",
-          });
-        } else if (data?.success == false) {
-          console.error(data?.message);
+          setFormData({ name: "", phone: "", email: "", message: "" });
+        } else if (data?.success === false) {
+          setErrText(data?.message || "Server error");
         }
       } catch (error) {
-        console.error("Error sending email:", error);
+        setErrText("Error sending message");
       }
     }
+    setSubmitting(false);
   };
 
   return (
@@ -280,38 +249,59 @@ const Home: NextPage = () => {
               <p className="font-semibold text-xl">Errorr : {errText}</p>
             </div>
             <RevealWrapper origin="bottom" delay={300} duration={500} distance="100px" viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
-              <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
+              <form className="flex gap-4 flex-col" onSubmit={handleSubmit} noValidate>
                 <div className="flex gap-4 flex-col sm:flex-row ">
-                  <input
-                    name="name"
-                    value={formData.name}
-                    required
-                    type="text"
-                    placeholder="Full Name"
-                    className="sendInput w-full"
-                    onChange={handleInputChange}
-                  />
-                  <input
-                    name="email"
-                    value={formData.email}
-                    type="email"
-                    placeholder="Email Address"
-                    className="sendInput w-full"
-                    onChange={handleInputChange}
-                  />
+                  <div className="w-full">
+                    <input
+                      name="name"
+                      value={formData.name}
+                      required
+                      type="text"
+                      placeholder="Full Name"
+                      className={`sendInput w-full ${errors.name ? "border-red-500" : ""}`}
+                      onChange={handleInputChange}
+                    />
+                    {errors.name && <span className="text-red-500 text-xs mt-1 block">{errors.name}</span>}
+                  </div>
+                  <div className="w-full">
+                    <input
+                      name="email"
+                      value={formData.email}
+                      type="email"
+                      placeholder="Email Address"
+                      className={`sendInput w-full ${errors.email ? "border-red-500" : ""}`}
+                      onChange={handleInputChange}
+                    />
+                    {errors.email && <span className="text-red-500 text-xs mt-1 block">{errors.email}</span>}
+                  </div>
                 </div>
-                <input name="phone" value={formData.phone} type="tel" placeholder="+998 99 123 45 67" className="sendInput" onChange={handleInputChange} />
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  placeholder="Your Message"
-                  cols={30}
-                  rows={10}
-                  id="message"
-                  className="sendInput"
-                  onChange={handleInputChange}
-                ></textarea>
-                <MainButton types="submit" title="Send Message" disabled={submitting} />
+                <div className="w-full">
+                  <InputMask mask="+\9\9\8 99 999 99 99" maskChar={null} name="phone" value={formData.phone} onChange={handleInputChange}>
+                    {(inputProps: any) => (
+                      <input
+                        {...inputProps}
+                        type="tel"
+                        placeholder="+998 99 123 45 67"
+                        className={`sendInput w-full ${errors.phone ? "border-red-500" : ""}`}
+                      />
+                    )}
+                  </InputMask>
+                  {errors.phone && <span className="text-red-500 text-xs mt-1 block">{errors.phone}</span>}
+                </div>
+                <div className="w-full">
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    placeholder="Your Message"
+                    cols={30}
+                    rows={10}
+                    id="message"
+                    className={`sendInput w-full ${errors.message ? "border-red-500" : ""}`}
+                    onChange={handleInputChange}
+                  ></textarea>
+                  {errors.message && <span className="text-red-500 text-xs mt-1 block">{errors.message}</span>}
+                </div>
+                <MainButton types="submit" title={submitting ? "Sending..." : "Send Message"} disabled={submitting} />
               </form>
             </RevealWrapper>
           </div>
