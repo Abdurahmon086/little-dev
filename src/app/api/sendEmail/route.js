@@ -1,46 +1,41 @@
-import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
-export async function POST(req, res) {
+
+export async function POST(req) {
   try {
     const { name, email, phone, message } = await req.json();
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: process.env.NEXT_PUBLIC_EMAIL_HOST,
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
-        pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
+    const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+
+    const text = `\u2709\uFE0F Yangi so'rov!\n\n👤 Ism: ${name}\n📧 Email: ${email}\n📱 Telefon: ${phone}\n\n✉️ Xabar: ${message}`;
+
+    const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    const response = await fetch(telegramUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: text,
+        parse_mode: "HTML",
+      }),
     });
 
-    const mailOptions = {
-      from: process.env.NEXT_PUBLIC_ADMIN_EMAIL_FULL,
-      to: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
-      subject: "Sending email through SMTP",
-      html: `
-      <div style="font-family: sans-serif;">
-        <h1>Contact Form Inquiry</h1>
-        <p>You have received the following inquiry:</p>
-        <br>
-        <p>User Name: ${name}</p>
-        <p>User Email: ${email}</p>
-        <p>User phone: ${phone}</p>
-        <br>
-        <p>User Message:</p>
-        <p>${message}</p>
-        <br>
-      </div>`,
-    };
-    const info = await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true, message: "Your free trial request has been sent!" });
+    const telegramResult = await response.json();
+
+    if (!response.ok || !telegramResult.ok) {
+      throw new Error("Telegram API error: " + JSON.stringify(telegramResult));
+    }
+
+    return NextResponse.json({ success: true, message: "So'rovingiz Telegram orqali yuborildi!" });
   } catch (error) {
     console.error("Error:", error);
-    return Response.json(
+    return NextResponse.json(
       {
         success: false,
-        message: "Internal server error, please try again",
+        message: "Ichki server xatosi, iltimos qayta urinib ko'ring",
       },
       { status: 500 }
     );

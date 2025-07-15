@@ -48,12 +48,12 @@ const imgData = {
       slug: "https://t.me/Alibaba0086",
       img: "/images/telegram.svg",
     },
-    {
-      id: 2,
-      title: "instagram icon",
-      slug: "https://www.instagram.com/alibaba_07__",
-      img: "/images/instagram.svg",
-    },
+    // {
+    //   id: 2,
+    //   title: "instagram icon",
+    //   slug: "https://www.instagram.com/alibaba_07__",
+    //   img: "/images/instagram.svg",
+    // },
     {
       id: 3,
       title: "github icon",

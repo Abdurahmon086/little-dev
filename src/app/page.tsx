@@ -58,7 +58,12 @@ const Home: NextPage = () => {
     }
 
     for (let i = 0; i < value.phone.length; i++) {
-      if (!(((value.phone.charCodeAt(i) >= 48 && value.phone.charCodeAt(i) <= 57) || (value.phone.charCodeAt(i) === 43 && value.phone[0] === "+")) && value.phone[0] === "+")) {
+      if (
+        !(
+          ((value.phone.charCodeAt(i) >= 48 && value.phone.charCodeAt(i) <= 57) || (value.phone.charCodeAt(i) === 43 && value.phone[0] === "+")) &&
+          value.phone[0] === "+"
+        )
+      ) {
         setErrText("type phone numberdi correctly (+) and the numbers should be.");
         setSubmitting(false);
         setSucc(true);
@@ -116,28 +121,28 @@ const Home: NextPage = () => {
     <div className="">
       {succ ? (
         <span className={`fixed top-20 z-50 right-5 font-bold text-white py-3 px-5 rounded-lg ${errText ? " bg-red-600" : "bg-green-600"}`}>
-          {errText ? "There was an error sending the email" : "Email sent successfully"}
+          {errText ? "There was an error sending the message" : "Message sent successfully"}
         </span>
       ) : (
         ""
       )}
       <section className="container mx-auto min-h-[100vh] py-28 md:py-40 lg:py-56 " id="/">
         <div className="hero grid grid-cols-1 gap-24 lg:gap-0 lg:grid-cols-2 items-center">
-          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" >
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px">
             <div className="tile">
               <div className="">
-                <p className="font-bold text text-2xl md:text-4xl">Hello, It's Me</p>
+                <p className="font-bold text text-2xl md:text-4xl">Hello, I’m</p>
                 <h1 className="font-bold text-4xl md:text-6xl text-red-600 my-2">Abdurahmon</h1>
                 <p className="font-bold text-2xl md:text-4xl">
-                  And I'm a
+                  And I’m a
                   <span className="text-red-600 px-1">
-                    <ReactTyped strings={[" Full Stuck developer"]} typeSpeed={60} backSpeed={100} loop className="font-bold" />
+                    <ReactTyped strings={[" Full Stack Developer"]} typeSpeed={60} backSpeed={100} loop className="font-bold" />
                   </span>
                 </p>
               </div>
               <p className="mt-4 lg:w-[400px] xl:w-[600px] font-semibold text-base md:text-2xl">
-                Although I may be new to the industry, my passion for full-stack development drives me to continuously learn and improve my skills. I have experience working with
-                Next.js, Nuxt.js, and Nest.js frameworks.
+                I am a passionate full-stack developer with over 1 year of hands-on experience. I have worked on various real-world projects using React.js,
+                Vue.js, and Node.js. My journey in tech has helped me build strong problem-solving skills and a deep love for coding.
               </p>
               <ul className="mt-4 flex gap-4">
                 {imgData &&
@@ -160,7 +165,7 @@ const Home: NextPage = () => {
               </a>
             </div>
           </RevealWrapper>
-          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" >
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px">
             <Image
               src={heroImage}
               alt="software development image"
@@ -175,27 +180,26 @@ const Home: NextPage = () => {
       <section className="container mx-auto min-h-[100vh]" id="aboute">
         <div className="sectionStyle justify-center lg:justify-between gap-8 flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-[50%]">
-            <RevealWrapper origin="top" delay={200} duration={400} distance="50px" >
+            <RevealWrapper origin="top" delay={200} duration={400} distance="50px">
               <Image src="/images/blog.webp" alt="blog image" height={700} width={500} quality={70} className="w-full" />
             </RevealWrapper>
           </div>
           <div className="w-full lg:w-[50%]">
-            <RevealWrapper origin="top" delay={200} duration={300} distance="50px" >
+            <RevealWrapper origin="top" delay={200} duration={300} distance="50px">
               <h4 className="category-title">
                 About <span className="text-red-600"> Me</span>
               </h4>
             </RevealWrapper>
-            <RevealWrapper origin="top" delay={400} duration={300} distance="50px" >
-              <h5 className="text-xl lg:text-3xl font-bold -mt-5">Full Stuck Developer</h5>
+            <RevealWrapper origin="top" delay={400} duration={300} distance="50px">
+              <h5 className="text-xl lg:text-3xl font-bold -mt-5">Full Stack Developer</h5>
             </RevealWrapper>
-            <RevealWrapper origin="top" delay={600} duration={300} distance="50px" >
+            <RevealWrapper origin="top" delay={600} duration={300} distance="50px">
               <p className="text-sm md:text-base lg:text-xl shadow-transparent mt-4 lg:mt-9 mb-2">
-                I am a motivated and ambitious full-stack developer with a strong educational background in Robotics and Mechatronics from TATU. Throughout my studies, I have
-                gained a solid foundation in programming languages such as Node.js, TypeScript, and GraphQL. I am also proficient in front-end development using React.js. If you
-                are looking for a dedicated full-stack developer who is ready to take on new challenges, please reach out. I look forward to discussing how we can collaborate on
-                exciting projects together.
+                With a year of professional experience and a degree from TATU University, I have developed solid skills in Node.js, TypeScript, GraphQL, and
+                React.js. I enjoy building both the front-end and back-end of web applications. I graduated from TATU, where I gained a strong foundation in
+                technology and teamwork. I am always open to new challenges and collaborations. Let’s connect and create something amazing together!
               </p>
-              <MainButton title="Read more" />
+              {/* <MainButton title="Read more" /> */}
             </RevealWrapper>
           </div>
         </div>
@@ -203,12 +207,12 @@ const Home: NextPage = () => {
       <section className="container mx-auto" id="project">
         <div className="sectionStyle w-full 2xl:w-[80%] mx-auto">
           <div className="">
-            <RevealWrapper origin="top" delay={200} duration={1000} distance="50px" >
+            <RevealWrapper origin="top" delay={200} duration={1000} distance="50px">
               <h4 className="text-center category-title">
                 Latest <span className="text-red-600 text-center"> Project</span>
               </h4>
             </RevealWrapper>
-            <RevealWrapper origin="bottom" delay={300} duration={1200} distance="50px" >
+            <RevealWrapper origin="bottom" delay={300} duration={1200} distance="50px">
               <ul className="flex justify-center flex-wrap gap-5 mt-6">
                 {projectsData &&
                   projectsData.map((item) => {
@@ -237,7 +241,7 @@ const Home: NextPage = () => {
       </section>
       <section className="container mx-auto min-h-[100vh]" id="skill">
         <div className="sectionStyle flex-col justify-center">
-          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" >
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px">
             <h4 className="category-title">
               My <span className="text-red-600"> skill</span>
             </h4>
@@ -248,7 +252,6 @@ const Home: NextPage = () => {
             delay={300}
             duration={500}
             distance="100px"
-            
             viewOffset={{ top: 0, right: 20, bottom: 0, left: 5 }}
           >
             <ul className="grid grid-cols-2 sm:grid-cols-4 gap-8 mt-8">
@@ -267,7 +270,7 @@ const Home: NextPage = () => {
       </section>
       <section className="container mx-auto min-h-[100vh]" id="contact">
         <div className="sectionStyle flex-col justify-center">
-          <RevealWrapper origin="top" delay={200} duration={300} distance="50px"  viewOffset={{ top: 0, right: 25, bottom: 0, left: 0 }}>
+          <RevealWrapper origin="top" delay={200} duration={300} distance="50px" viewOffset={{ top: 0, right: 25, bottom: 0, left: 0 }}>
             <h4 className="category-title">
               Contact <span className="text-red-600"> Me!</span>
             </h4>
@@ -276,11 +279,26 @@ const Home: NextPage = () => {
             <div className="bg-red-950 border-red-500 border-2 rounded-lg p-5 mb-5" style={errText ? { display: "block" } : { display: "none" }}>
               <p className="font-semibold text-xl">Errorr : {errText}</p>
             </div>
-            <RevealWrapper origin="bottom" delay={300} duration={500} distance="100px"  viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
+            <RevealWrapper origin="bottom" delay={300} duration={500} distance="100px" viewOffset={{ top: 10, right: 10, bottom: 50, left: 0 }}>
               <form className="flex gap-4 flex-col" onSubmit={handleSubmit}>
                 <div className="flex gap-4 flex-col sm:flex-row ">
-                  <input name="name" value={formData.name} required type="text" placeholder="Full Name" className="sendInput w-full" onChange={handleInputChange} />
-                  <input name="email" value={formData.email} type="email" placeholder="Email Address" className="sendInput w-full" onChange={handleInputChange} />
+                  <input
+                    name="name"
+                    value={formData.name}
+                    required
+                    type="text"
+                    placeholder="Full Name"
+                    className="sendInput w-full"
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    name="email"
+                    value={formData.email}
+                    type="email"
+                    placeholder="Email Address"
+                    className="sendInput w-full"
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <input name="phone" value={formData.phone} type="tel" placeholder="+998 99 123 45 67" className="sendInput" onChange={handleInputChange} />
                 <textarea
